@@ -34,15 +34,14 @@ public final class QueryUtils {
     public static ArrayList<Earthquake> Fentch_EarthQuak_Data(String request_url) {
         URL url = createUrl(request_url);
         String jsonresponse = null;
+/*
 
-        /*
-        * THis block of code for force delaying the data for checking the progressbar wroking
-        * */
-      /*  try {
-            Thread.sleep(20000);
+        try {
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }*/
+        }
+*/
 
 
         try {

@@ -11,11 +11,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -24,6 +21,9 @@ public class EarthquakeActivity extends AppCompatActivity implements android.app
     private static final String USGS_REQUEST_URL =
             "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2017-01-01&endtime=2017-09-25&minfelt=50&minmagnitude=5";
     private static final int EATHQUAKE_LOADER_ID = 0;
+
+    /** Duration of wait **/
+    private final int SPLASH_DISPLAY_LENGTH = 1000;
 
     private TextView mEmptyStateTextView;
 
@@ -43,7 +43,6 @@ public class EarthquakeActivity extends AppCompatActivity implements android.app
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.earthquake_activity);
-
         listView = (ListView) findViewById(R.id.list);
         earthQuakes = new ArrayList<>();
         earthquakAdaptor = new EarthquakAdaptor(this, earthQuakes);
@@ -56,9 +55,10 @@ public class EarthquakeActivity extends AppCompatActivity implements android.app
         * */
 
          // for showing empty view
+
+
         mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
         listView.setEmptyView(mEmptyStateTextView);
-
 
 //      this is for checking network connectivity for the app
 
@@ -74,9 +74,11 @@ public class EarthquakeActivity extends AppCompatActivity implements android.app
         }
         else {
 
-            Toast.makeText(EarthquakeActivity.this, "Beta pahle Net On Kr le Phi KHolna",
-                    Toast.LENGTH_LONG).show();
-            EarthquakeActivity.this.finish();
+         /*   mEmptyStateTextView.setText(R.string.no_internet_connection);
+            ProgressBar progressBar=(ProgressBar)findViewById(R.id.progress_bar);
+            progressBar.setVisibility(View.GONE);
+
+*/
         }
 
 
@@ -104,9 +106,11 @@ public class EarthquakeActivity extends AppCompatActivity implements android.app
 
         // Set empty state text to display "No earthquakes found."
         mEmptyStateTextView.setText(R.string.no_earthquake);
+/*
 
         ProgressBar progressBar=(ProgressBar)findViewById(R.id.progress_bar);
         progressBar.setVisibility(View.GONE);
+*/
 
 
     }
